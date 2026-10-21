@@ -10,3 +10,5 @@ outputs/
 *.wav
 *.zip
 references/local-runtime.json
+
+!examples/couple-zodiac/source.mp4

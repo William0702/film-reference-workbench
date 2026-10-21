@@ -1,0 +1,169 @@
+{
+  "schema": "aipi.frames/v1",
+  "sourceSha256": "fee89fd0cd1630e1a8c9e89194f32ddb75b92f8acf369344a209466f669f6ae2",
+  "binding": "30b42365cad6c1528e43879b638a4b800e3a6610d5245c0cfd79e4a70d6fbcda",
+  "items": [
+    {
+      "shotId": "S01",
+      "role": "in",
+      "index": 7,
+      "time": 0.23333333333333334,
+      "originalTime": 0.23333333333333334,
+      "file": "S01-in.jpg",
+      "sha256": "b39e3d75660cfde8f927b1c555b6d3283882dd0a0bf6d733cd688d8fec0ddbf1"
+    },
+    {
+      "shotId": "S01",
+      "role": "out",
+      "index": 42,
+      "time": 1.4,
+      "originalTime": 1.4,
+      "file": "S01-out.jpg",
+      "sha256": "dec051308f5c8fe6d74af3e4ac21f9485ff8dc19c7f2de28bdf7e514e47edbfd"
+    },
+    {
+      "shotId": "S02",
+      "role": "in",
+      "index": 61,
+      "time": 2.033333333333333,
+      "originalTime": 2.033333333333333,
+      "file": "S02-in.jpg",
+      "sha256": "66da727b1a93d1043a6f8e30edb94a4d097cb762d25ee3e2da2c0fe9d008f83c"
+    },
+    {
+      "shotId": "S02",
+      "role": "out",
+      "index": 115,
+      "time": 3.8333333333333335,
+      "originalTime": 3.8333333333333335,
+      "file": "S02-out.jpg",
+      "sha256": "35e7a50f9e67425b94fe05c6d712d6e2029a4b993db5ac4425d2016235a9b9b3"
+    },
+    {
+      "shotId": "S03",
+      "role": "in",
+      "index": 127,
+      "time": 4.233333333333333,
+      "originalTime": 4.233333333333333,
+      "file": "S03-in.jpg",
+      "sha256": "32503946aab0929df7c906027a0d51abfc47f9f68213dc173abc6262ed57eb85"
+    },
+    {
+      "shotId": "S03",
+      "role": "out",
+      "index": 127,
+      "time": 4.233333333333333,
+      "originalTime": 4.233333333333333,
+      "file": "S03-out.jpg",
+      "sha256": "32503946aab0929df7c906027a0d51abfc47f9f68213dc173abc6262ed57eb85"
+    },
+    {
+      "shotId": "S04",
+      "role": "in",
+      "index": 134,
+      "time": 4.466666666666667,
+      "originalTime": 4.466666666666667,
+      "file": "S04-in.jpg",
+      "sha256": "2617ec922daa0097517fcdc0a48e3cd44e7e1f802fad3e72c260a62ebd069ec2"
+    },
+    {
+      "shotId": "S04",
+      "role": "out",
+      "index": 162,
+      "time": 5.4,
+      "originalTime": 5.4,
+      "file": "S04-out.jpg",
+      "sha256": "e3c9f4fcdc4cbfd23ac28fda1541e50ec558e30539d7460b68a5a7d12ba4abbe"
+    },
+    {
+      "shotId": "S05",
+      "role": "in",
+      "index": 182,
+      "time": 6.066666666666666,
+      "originalTime": 6.066666666666666,
+      "file": "S05-in.jpg",
+      "sha256": "66778427d9b87b8c91d2008ac22c64940e96d5081d4d4b86bf27737b4769737a"
+    },
+    {
+      "shotId": "S05",
+      "role": "out",
+      "index": 244,
+      "time": 8.133333333333333,
+      "originalTime": 8.133333333333333,
+      "file": "S05-out.jpg",
+      "sha256": "8ebb474989b79a883b6ecf6164a8242998ade3dddcdcc874784c9da79726eac1"
+    },
+    {
+      "shotId": "S06",
+      "role": "in",
+      "index": 268,
+      "time": 8.933333333333334,
+      "originalTime": 8.933333333333334,
+      "file": "S06-in.jpg",
+      "sha256": "0f093eb2b9f599fbb5825b6afe0234663556a1e0075af04ee61d3e147d571da5"
+    },
+    {
+      "shotId": "S06",
+      "role": "out",
+      "index": 320,
+      "time": 10.666666666666666,
+      "originalTime": 10.666666666666666,
+      "file": "S06-out.jpg",
+      "sha256": "4bdf1716ef6b75f11d30ab244d9ca232df05de081a1dc19941fe871bf373a88d"
+    },
+    {
+      "shotId": "S07",
+      "role": "in",
+      "index": 337,
+      "time": 11.233333333333333,
+      "originalTime": 11.233333333333333,
+      "file": "S07-in.jpg",
+      "sha256": "1d50a42d627b104ddf31a4b6de0848e4e7593f297e0ee45a7844463749d30734"
+    },
+    {
+      "shotId": "S07",
+      "role": "out",
+      "index": 365,
+      "time": 12.166666666666666,
+      "originalTime": 12.166666666666666,
+      "file": "S07-out.jpg",
+      "sha256": "471c40043d08660a435227735748a8aacdb4a6fc0f98f355541f727e3993d4fa"
+    },
+    {
+      "shotId": "S08",
+      "role": "in",
+      "index": 375,
+      "time": 12.5,
+      "originalTime": 12.5,
+      "file": "S08-in.jpg",
+      "sha256": "d4e5597ea74fe55510515f92e769c6c41c9d4cb0ce25d94f5b390d745544d025"
+    },
+    {
+      "shotId": "S08",
+      "role": "out",
+      "index": 390,
+      "time": 13,
+      "originalTime": 13,
+      "file": "S08-out.jpg",
+      "sha256": "2ba1bd6a06d8c9d9986c1b00b42eaa6fb8dea723f1f87036b5e21ddf352818f7"
+    },
+    {
+      "shotId": "S09",
+      "role": "in",
+      "index": 410,
+      "time": 13.666666666666666,
+      "originalTime": 13.666666666666666,
+      "file": "S09-in.jpg",
+      "sha256": "84dfce0bb818fa06bbbda57dcb4281e81f3e5b3b8fcd52b0f52415b526b8a247"
+    },
+    {
+      "shotId": "S09",
+      "role": "out",
+      "index": 485,
+      "time": 16.166666666666668,
+      "originalTime": 16.166666666666668,
+      "file": "S09-out.jpg",
+      "sha256": "448194c22d63c41bdb90caef9cb4effd9a780c7882407fa82eb931538bd46f2a"
+    }
+  ]
+}
