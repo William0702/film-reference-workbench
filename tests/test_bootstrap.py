@@ -14,6 +14,12 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import bootstrap as b
 
 class RepairTests(unittest.TestCase):
+    def test_transient_windows_rename_error_is_retried(self):
+        error=PermissionError('temporary lock');error.winerror=32
+        with patch.object(Path,'rename',side_effect=[error,None]) as rename, patch.object(b.time,'sleep'):
+            b.rename_directory(Path('stage'),Path('target'))
+            self.assertEqual(rename.call_count,2)
+
     def test_acl_repair_refuses_other_directory(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(b,'RUNTIME',Path(tmp)), patch.object(b,'run') as command:
             with self.assertRaisesRegex(RuntimeError,'restricted'):

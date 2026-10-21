@@ -63,6 +63,17 @@ def runtime_directory(prefix):
     path.mkdir()
     return path
 
+def rename_directory(source,target):
+    # Windows scanners/native-loader teardown can briefly retain a directory.
+    # Do not force replacement or suppress persistent access failures.
+    for attempt in range(8):
+        try:
+            source.rename(target)
+            return
+        except PermissionError as e:
+            if sys.platform!='win32' or getattr(e,'winerror',None) not in (5,32) or attempt==7:raise
+            time.sleep(0.5*(attempt+1))
+
 def inherit_runtime_access(path):
     """Enable existing parent ACL inheritance only; never add principals/grants."""
     path=Path(path)
@@ -176,8 +187,8 @@ def repair(report, lock):
         validated=check_packages(stage)
         if not validated['ok']:raise RuntimeError('Staged dependencies failed verification: '+validated['error'])
         old=RUNTIME/'python-packages'
-        if old.exists(): old.rename(RUNTIME/('packages-backup-'+str(time.time_ns())))
-        stage.rename(old)
+        if old.exists(): rename_directory(old,RUNTIME/('packages-backup-'+str(time.time_ns())))
+        rename_directory(stage,old)
     for name, sha in lock['model']['files'].items():
         download(f"https://huggingface.co/{lock['model']['repository']}/resolve/{lock['model']['revision']}/{name}",RUNTIME/'model-small'/name,sha)
 
