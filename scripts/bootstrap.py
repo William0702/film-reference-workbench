@@ -25,15 +25,25 @@ def digest(path):
         for chunk in iter(lambda: f.read(1024*1024), b''): h.update(chunk)
     return h.hexdigest()
 
-def download(url, target, expected):
+def download(url, target, expected, mirrors=()):
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.is_file() and digest(target) == expected: return
     partial = target.with_name(target.name + '.partial')
-    print('Download: ' + url, file=sys.stderr, flush=True)
-    with urllib.request.urlopen(url, timeout=60) as response, partial.open('wb') as f:
-        shutil.copyfileobj(response, f, length=1024*1024)
-    if digest(partial) != expected: raise RuntimeError('SHA256 mismatch: ' + target.name)
-    partial.replace(target)
+    failures=[]
+    for source in (url,*mirrors):
+        for attempt in range(2):
+            print(f'Download (attempt {attempt+1}): {source}', file=sys.stderr, flush=True)
+            try:
+                with urllib.request.urlopen(source, timeout=60) as response, partial.open('wb') as f:
+                    shutil.copyfileobj(response, f, length=1024*1024)
+            except (OSError, TimeoutError) as e:
+                failures.append(str(e))
+                if attempt==0:time.sleep(1)
+                continue
+            if digest(partial) != expected: raise RuntimeError('SHA256 mismatch: ' + target.name)
+            partial.replace(target)
+            return
+    raise RuntimeError('Download failed: '+target.name+'; '+'; '.join(failures))
 
 def probe_tool(name):
     try:
@@ -104,7 +114,7 @@ def repair(report, lock):
         (RUNTIME/'tools').mkdir(exist_ok=True);shutil.copy2(executables[0],RUNTIME/'tools/node.exe')
     if not all(report['tools'][n]['ok'] for n in ('ffmpeg','ffprobe')):
         spec=lock['ffmpeg']; archive=RUNTIME/'downloads'/spec['filename']
-        download(spec['url'], archive, spec['sha256'])
+        download(spec['url'], archive, spec['sha256'],spec.get('mirrors',[]))
         target=RUNTIME/'ffmpeg-distribution'/spec['version']
         target.mkdir(parents=True,exist_ok=True)
         with zipfile.ZipFile(archive) as z:
@@ -148,7 +158,7 @@ def main():
     try: fd=os.open(flag,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
     except FileExistsError: raise SystemExit('Another setup is running, or previous setup was interrupted. Inspect runtime/.bootstrap.lock before retrying.')
     os.close(fd)
-    result={'ok':False,'version':'0.3.0'}
+    result={'ok':False,'version':'0.3.1'}
     try:
         result['before']=check(lock)
         if a.repair and not ready(result['before']):repair(result['before'],lock)
