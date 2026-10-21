@@ -38,7 +38,7 @@ install.ps1 也可从已下载的源码目录执行，自动 clone 到默认 ski
 | --- | --- |
 | Python 3.12 x64 | 复用兼容解释器；缺少时通过 winget 社区源 Python.Python.3.12 / 3.12.10 用户安装；缺 winget 则明确报告，需先准备 Python |
 | Node.js 18+ | 复用可执行工具；否则从 nodejs.org 下载固定 22.16.0 Windows x64 ZIP，核对同版本官方 SHASUMS256，便携保存到 runtime |
-| FFmpeg + ffprobe | 复用可执行工具；否则下载 Gyan 8.1.2 essentials ZIP，核对仓库锁定 SHA256，保留发行包许可/文档 |
+| FFmpeg + ffprobe | 复用可执行工具；否则下载 Gyan 8.1.2 essentials ZIP，网络失败有限重试后回退官方 GitHub 同版本镜像，始终核对同一锁定 SHA256，保留许可/文档 |
 | ASR Python 依赖 | PyPI 官方源、requirements-win-py312.lock.txt 固定版本，只接受二进制 wheel，装到 runtime/python-packages |
 | small 模型 | Hugging Face Systran/faster-whisper-small 固定 revision；四文件按锁定 SHA256 校验，缺失/损坏文件单独重下 |
 
@@ -46,4 +46,4 @@ install.ps1 也可从已下载的源码目录执行，自动 clone 到默认 ski
 
 FILM_REFERENCE_RUNTIME 可显式指定独立运行时目录，用于已有资源或隔离验证，默认无需设置。该目录须由当前用户控制，报告及自检输出均写入该目录。
 
-实际验证范围见 validation 文档。兼容环境运行和模拟下载测试不能替代另一台机器真实联网安装测试。
+实际验证范围见 [0.3.1 冷安装与更新记录](validation-0.3.1.md)。已执行同主机隔离目录的真实联网补齐，不等于另一台全新 Windows 电脑的完整系统安装验证。

@@ -11,6 +11,14 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import bootstrap as b
 
 class RepairTests(unittest.TestCase):
+    def test_network_retry_then_verified_mirror(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target=Path(tmp)/'file'
+            with patch.object(b.urllib.request,'urlopen',side_effect=[OSError('TLS EOF'),OSError('TLS EOF'),io.BytesIO(b'correct')]) as fetch, patch.object(b.time,'sleep'):
+                b.download('https://fixture/primary',target,hashlib.sha256(b'correct').hexdigest(),['https://fixture/mirror'])
+                self.assertEqual(fetch.call_count,3)
+            self.assertEqual(target.read_bytes(),b'correct')
+
     def test_hash_mismatch_preserves_existing_target(self):
         with tempfile.TemporaryDirectory() as tmp:
             target=Path(tmp)/'file';target.write_bytes(b'old')
