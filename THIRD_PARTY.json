@@ -1,0 +1,31 @@
+{
+  "aipi-film-study": {
+    "source": "https://github.com/ai-pi-labs/aipi-film-tools",
+    "license": "MIT",
+    "files": "vendor/aipi-film-study"
+  },
+  "storyboard-shot-breakdown": {
+    "source": "https://github.com/0xsline/OpenChatCut",
+    "license": "AGPL-3.0",
+    "files": "vendor/storyboard-shot-breakdown",
+    "note": "Workflow source only; full OpenChatCut app not included."
+  },
+  "video-shot-analysis-feishu": {
+    "source": "https://github.com/wocha-xiaoli/video-shot-analysis-feishu",
+    "license": "MIT",
+    "files": "vendor/video-shot-analysis-feishu"
+  },
+  "sha256": {
+    "vendor/aipi-film-study/LICENSE": "e327eee9f3e469f6c865bdeb524a376df7ac421e7aad9fb6a6e44d3d3e137620",
+    "vendor/aipi-film-study/RIGHTS.txt": "493d13343deb9f9b57be28f42cc47c915e72e9ba3c35d7d9465ea25fca102c94",
+    "vendor/aipi-film-study/scripts/engine.mjs": "58b3978065fa30d8aca90586c0e682eb11f09d0074a7ac80ec280c76b5315e5a",
+    "vendor/aipi-film-study/references/study-format.md": "8a4e25634b6edcc7a2cb709140959661dce4429ca6ed8f2c5ed2109730cc9a9c",
+    "vendor/aipi-film-study/references/review-method.md": "47adac875b1f6834823fcf96c4dd5dbfb6865a1e819f41502cf15528404156f1",
+    "vendor/aipi-film-study/upstream-workflow.md": "15ea4811ec507dac485173f4c3902f1de261dd5d9a5d7ae62cc2cbc5d25c2e54",
+    "vendor/storyboard-shot-breakdown/upstream-workflow.md": "306d7e45904ee1d3f15e46c1c66ea47b7d77008d259e09fe1efbd26478ea52d6",
+    "vendor/storyboard-shot-breakdown/LICENSE": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+    "vendor/video-shot-analysis-feishu/LICENSE": "4c48ec9b0e530b3c10db9389980bc624e307f81ac0d81dfeebb217907caca4f5",
+    "vendor/video-shot-analysis-feishu/scripts/extract_shots.py": "4b91c0d6492b3f4150edc5485f6d8a752e83143647011676237633be20d40531",
+    "vendor/video-shot-analysis-feishu/upstream-workflow.md": "9ab4bfc96cbe2908c7fd14b50bfc42349013a0e237c5ec068661f9c504406640"
+  }
+}

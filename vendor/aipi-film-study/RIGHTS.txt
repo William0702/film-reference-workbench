@@ -1,0 +1,5 @@
+Copyright (c) 2026 AIπ（AI圆周派）
+
+本技能的应用代码、界面及工作流文档采用 MIT License，完整授权见同目录 LICENSE。
+Node.js、FFmpeg、Chrome/Chromium 等外部工具不包含在本包中，分别遵循其项目许可。
+用户提供的视频、音频、图片及分析资料不因使用本工具而改变权利归属。

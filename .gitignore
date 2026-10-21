@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+runtime/
+models/
+outputs/
+.env
+.env.*
+*.mp4
+*.wav
+*.zip
+references/local-runtime.json
