@@ -7,10 +7,11 @@ import platform
 import shutil
 import subprocess
 import sys
-import tempfile
 import time
 import urllib.request
 import zipfile
+import uuid
+import stat
 from pathlib import Path
 from tool_paths import ROOT, RUNTIME, tool
 
@@ -55,8 +56,46 @@ def probe_tool(name):
     except (SystemExit, Exception) as e:
         return {'ok': False, 'error': str(e)}
 
-def check_packages():
-    packages = RUNTIME/'python-packages'
+def runtime_directory(prefix):
+    # tempfile.mkdtemp uses a protected owner-only DACL on Windows Python 3.12.
+    # These generated public tools/results must inherit the chosen runtime's ACL.
+    path=RUNTIME/(prefix+uuid.uuid4().hex)
+    path.mkdir()
+    return path
+
+def inherit_runtime_access(path):
+    """Enable existing parent ACL inheritance only; never add principals/grants."""
+    path=Path(path)
+    if sys.platform!='win32':return
+    if path.parent.resolve()!=RUNTIME.resolve() or not (path.name=='python-packages' or path.name.startswith('packages-stage-')):
+        raise RuntimeError('Permission repair restricted to generated dependency directories')
+    marker=path/'.film-runtime-access.json'
+    policy={'schema':'parent-acl-inheritance/v1','runtime':str(RUNTIME.resolve())}
+    # A validated stage carries its repair record through the atomic rename.
+    # Later readers with Modify access need not request WRITE_DAC again.
+    try:
+        if json.loads(marker.read_text(encoding='utf-8'))==policy:return
+    except (OSError,ValueError):pass
+    # Do not traverse links into another location while changing inheritance.
+    def walk_error(error):raise error
+    for parent,dirs,files in os.walk(path,followlinks=False,onerror=walk_error):
+        for item in [Path(parent),*(Path(parent)/n for n in dirs+files)]:
+            if item.lstat().st_file_attributes & stat.FILE_ATTRIBUTE_REPARSE_POINT:
+                raise RuntimeError('Refusing permission repair through a reparse point')
+    icacls=Path(os.environ.get('SystemRoot','C:/Windows'))/'System32/icacls.exe'
+    absolute=str(path.resolve())
+    native_path=('\\\\?\\UNC\\'+absolute[2:]) if absolute.startswith('\\\\') else ('\\\\?\\'+absolute)
+    try:
+        run([icacls,native_path,'/inheritancelevel:e','/T','/Q'],capture_output=True,timeout=120)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError('Cannot inherit runtime access; run setup as the installation owner. '+e.stdout[-1000:]+e.stderr[-1000:]) from e
+    marker.write_text(json.dumps(policy),encoding='utf-8')
+
+def check_packages(packages=None):
+    packages = Path(packages) if packages else RUNTIME/'python-packages'
+    if packages.exists():
+        try:next(packages.iterdir(),None)
+        except PermissionError:return {'ok':False,'error':'Dependency directory is not readable. Run setup as the installation owner to repair runtime ACL inheritance.'}
     code = '''import sys,json,importlib.metadata as m
 sys.path.insert(0,sys.argv[1])
 from pathlib import Path
@@ -130,9 +169,12 @@ def repair(report, lock):
     if not report['packages']['ok']:
         pip=subprocess.run([sys.executable,'-m','pip','--version'],capture_output=True)
         if pip.returncode:run([sys.executable,'-m','ensurepip'])
-        stage=Path(tempfile.mkdtemp(prefix='packages-stage-',dir=RUNTIME))
+        stage=runtime_directory('packages-stage-')
         run([sys.executable,'-m','pip','install','--disable-pip-version-check','--only-binary=:all:',
              '--index-url','https://pypi.org/simple','--target',stage,'-r',ROOT/'requirements-win-py312.lock.txt'])
+        inherit_runtime_access(stage)
+        validated=check_packages(stage)
+        if not validated['ok']:raise RuntimeError('Staged dependencies failed verification: '+validated['error'])
         old=RUNTIME/'python-packages'
         if old.exists(): old.rename(RUNTIME/('packages-backup-'+str(time.time_ns())))
         stage.rename(old)
@@ -140,7 +182,7 @@ def repair(report, lock):
         download(f"https://huggingface.co/{lock['model']['repository']}/resolve/{lock['model']['revision']}/{name}",RUNTIME/'model-small'/name,sha)
 
 def self_test():
-    out=Path(tempfile.mkdtemp(prefix='self-test-',dir=RUNTIME))
+    out=runtime_directory('self-test-')
     video=out/'synthetic.mp4'
     run([tool('ffmpeg'),'-v','error','-f','lavfi','-i','testsrc2=size=320x180:rate=10:duration=1',
          '-f','lavfi','-i','anullsrc=r=16000:cl=mono','-t','1','-c:v','mpeg4','-c:a','aac',video],capture_output=True)
@@ -158,8 +200,11 @@ def main():
     try: fd=os.open(flag,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
     except FileExistsError: raise SystemExit('Another setup is running, or previous setup was interrupted. Inspect runtime/.bootstrap.lock before retrying.')
     os.close(fd)
-    result={'ok':False,'version':'0.3.1'}
+    result={'ok':False,'version':'0.3.2'}
     try:
+        if a.repair and (RUNTIME/'python-packages').is_dir():
+            inherit_runtime_access(RUNTIME/'python-packages')
+            result['permissionRepair']='Enabled parent ACL inheritance on generated dependencies; no principals added'
         result['before']=check(lock)
         if a.repair and not ready(result['before']):repair(result['before'],lock)
         result['after']=check(lock)

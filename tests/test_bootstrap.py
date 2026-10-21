@@ -5,12 +5,35 @@ import sys
 import tempfile
 import unittest
 import zipfile
+import json
+import stat
+from types import SimpleNamespace
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import bootstrap as b
 
 class RepairTests(unittest.TestCase):
+    def test_acl_repair_refuses_other_directory(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(b,'RUNTIME',Path(tmp)), patch.object(b,'run') as command:
+            with self.assertRaisesRegex(RuntimeError,'restricted'):
+                b.inherit_runtime_access(Path(tmp)/'unrelated')
+            command.assert_not_called()
+
+    def test_acl_record_avoids_requiring_write_dac_again(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(b,'RUNTIME',Path(tmp)), patch.object(b,'run') as command:
+            target=Path(tmp)/'python-packages';target.mkdir()
+            (target/'.film-runtime-access.json').write_text(json.dumps({'schema':'parent-acl-inheritance/v1','runtime':str(Path(tmp).resolve())}))
+            b.inherit_runtime_access(target)
+            command.assert_not_called()
+
+    def test_acl_repair_rejects_reparse_point(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(b,'RUNTIME',Path(tmp)), patch.object(b,'run') as command:
+            target=Path(tmp)/'python-packages';target.mkdir()
+            with patch.object(b.os,'walk',return_value=[(str(target),[],['link'])]), patch.object(Path,'lstat',return_value=SimpleNamespace(st_file_attributes=stat.FILE_ATTRIBUTE_REPARSE_POINT)):
+                with self.assertRaisesRegex(RuntimeError,'reparse point'):b.inherit_runtime_access(target)
+            command.assert_not_called()
+
     def test_network_retry_then_verified_mirror(self):
         with tempfile.TemporaryDirectory() as tmp:
             target=Path(tmp)/'file'
