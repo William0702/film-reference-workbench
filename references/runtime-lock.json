@@ -1,0 +1,18 @@
+{
+  "python": {"wingetId": "Python.Python.3.12", "version": "3.12.10"},
+  "node": {"version": "22.16.0", "filename": "node-v22.16.0-win-x64.zip", "url": "https://nodejs.org/dist/v22.16.0/node-v22.16.0-win-x64.zip", "checksumsUrl": "https://nodejs.org/dist/v22.16.0/SHASUMS256.txt"},
+  "ffmpeg": {
+    "version": "8.1.2", "filename": "ffmpeg-8.1.2-essentials_build.zip",
+    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.1.2-essentials_build.zip",
+    "sha256": "db580001caa24ac104c8cb856cd113a87b0a443f7bdf47d8c12b1d740584a2ec"
+  },
+  "model": {
+    "repository": "Systran/faster-whisper-small", "revision": "536b0662742c02347bc0e980a01041f333bce120",
+    "files": {
+      "config.json": "b55496ac7940a7ae47d2c01eab40edfd8701feec1229d9cce3b40014383fb828",
+      "model.bin": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671",
+      "tokenizer.json": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "vocabulary.txt": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913"
+    }
+  }
+}

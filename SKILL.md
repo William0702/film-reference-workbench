@@ -2,12 +2,12 @@
 name: film-reference-workbench
 description: 本地成片逐镜拉片、人物对白对照、五维导演分析、镜头组素材池与脚本优化交接。用于复刻参考整理；不代替新故事创作或视频生成。
 metadata:
-  version: "0.2.1"
+  version: "0.3.0"
 ---
 
 # 复合拉片工作台
 
-这是 0.2.1 的 Git 源码分发版，三个原技能的必要模块已内置，用户只需调用 film-reference-workbench，无需安装或单独调用原三个技能。以本目录为技能根目录。源码不包含运行时、模型或私人案例；先按 [README.md](README.md) 准备 Windows x64 / Python 3.12 / Node.js 18+、FFmpeg、ffprobe、本地识别依赖和模型。缺少资源时报告具体缺口，不自动下载或转去调用其他技能。
+这是 0.3.0 的 Git 源码分发版，三个原技能的必要模块已内置，用户只需调用 film-reference-workbench，无需安装或单独调用原三个技能。以本目录为技能根目录。源码不包含运行时、模型或私人案例；先按 [README.md](README.md) 准备 Windows x64 / Python 3.12 / Node.js 18+、FFmpeg、ffprobe、本地识别依赖和模型。安装、首次使用和更新后先按 [安装与更新](references/installation.md) 执行检查、按需补齐和合成片自检。获得安装/修复授权后用 setup.ps1 自动补齐已声明依赖；网络或权限受阻时报告具体缺口，不调用其他技能。
 
 ## 统一入口
 

@@ -1,14 +1,19 @@
-# film-reference-workbench 0.2.1
+# film-reference-workbench 0.3.0
 
 本地逐镜拉片、人物对白对照、五维导演分析和素材池交接的复合 Codex 技能。三个模块位于 vendor/，不需要另装原技能。
 
-## 安装与资源
+## 自动安装、环境检查与更新
+
+Agent 请先读取 [安装与更新说明](references/installation.md)。scripts/install.ps1 安装，scripts/setup.ps1 自动检查/补齐并运行合成片自检，scripts/update.ps1 拉取 main 最新代码后重复自检。仅支持 Windows x64；私有仓库需要读取权限。
+
+## 运行资源
 
 将整个目录安装到自己的 Codex skills 路径。运行环境为 Windows x64、CPython 3.12、Node.js 18+。源码包不附带运行时，首次安装并非开箱即用。
 
-- FFmpeg 与 ffprobe：自行准备到 runtime/tools/，或加入系统 PATH。
-- Python 依赖：按 requirements-win-py312.lock.txt 准备到 runtime/python-packages/。run_asr.py 当前要求此目录，单纯安装到系统环境不能替代。
-- small 模型：准备到 runtime/model-small/，必须含 model.bin 和配套文件。下载辅助脚本为 scripts/download_model.py；先查看 --help，下载须显式执行。
+- 首次安装：执行 scripts/install.ps1，默认自动检查、补齐缺件，再运行合成片自检。
+- 环境修复：执行 scripts/setup.ps1；FFmpeg/ffprobe、Node.js、Python 识别依赖、small 模型按安装说明准备，正确资源复用。
+- 后续更新：执行 scripts/update.ps1，快进拉取 main 后重新检查和自检。
+- 仅检查：执行 scripts/setup.ps1 -CheckOnly，不联网、不安装组件。
 - 已有本地一体化版可继续使用原 runtime/，这些文件不会进入 Git。
 
 ```powershell
@@ -22,7 +27,7 @@ prepare_case 生成候选切镜、截图与机器对白证据。Agent 还需实�
 
 保留 THIRD_PARTY_NOTICES.md、THIRD_PARTY.json 以及 vendor/ 下许可。上游含 MIT 与 AGPL-3.0 模块；尚未为新增整合代码选定统一开源许可证，不宣称全包 MIT。建议先使用私有仓库，公开发布前处理许可证选择。
 
-本目录取自本机安装版 0.2.1，排除了模型、依赖、二进制、私人视频和案例。本次执行源码结构、Python 语法和技能格式检查；既往本机运行记录不等于本次在全新机器上复测。浏览器交互及第二部影片尚未验证。
+0.3.0 在既有 0.2.1 分析流程上增加安装、依赖修复和更新入口。运行时大文件不进入 Git；examples 中包含用户明确授权上传到该私有仓库的案例原片及分析数据。已在本机通过合成片端到端自检、离线修复测试和本地 Git 更新保护测试；全新机器联网安装尚未验证。详见 [本轮验证范围](references/validation-0.3.0.md)。
 
 ## 完整案例
 

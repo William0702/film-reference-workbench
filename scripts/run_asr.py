@@ -1,10 +1,10 @@
 import argparse,os,runpy,sys
 from pathlib import Path
-from tool_paths import ROOT,tool
+from tool_paths import ROOT,RUNTIME,tool
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--video',required=True);p.add_argument('--out',required=True);p.add_argument('--model',default=str(ROOT/'runtime/model-small'));p.add_argument('--ffmpeg');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--video',required=True);p.add_argument('--out',required=True);p.add_argument('--model',default=str(RUNTIME/'model-small'));p.add_argument('--ffmpeg');a=p.parse_args()
     if sys.platform!='win32' or sys.version_info[:2]!=(3,12):raise SystemExit('Local runtime requires Windows x64 CPython3.12')
-    packages=ROOT/'runtime/python-packages'
+    packages=RUNTIME/'python-packages'
     if not packages.is_dir():raise SystemExit('Packaged Python dependencies are missing')
     sys.path.insert(0,str(packages))
     if not (Path(a.model)/'model.bin').is_file():raise SystemExit('Local model is missing')
