@@ -211,7 +211,7 @@ def main():
     try: fd=os.open(flag,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
     except FileExistsError: raise SystemExit('Another setup is running, or previous setup was interrupted. Inspect runtime/.bootstrap.lock before retrying.')
     os.close(fd)
-    result={'ok':False,'version':'0.3.2'}
+    result={'ok':False,'version':'0.3.3'}
     try:
         if a.repair and (RUNTIME/'python-packages').is_dir():
             inherit_runtime_access(RUNTIME/'python-packages')

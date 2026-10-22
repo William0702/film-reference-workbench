@@ -4,7 +4,7 @@
 
 ## 第一次安装
 
-私有仓库要求安装 Agent 的账号有读取权限，且 Git 已完成认证。不要把 token 写入命令、文档或仓库。Git 是拉取工具的前置依赖。目标目录应为空，旧版非 Git 安装不自动覆盖。
+正式仓库现为公开仓库，安装和更新可以匿名拉取，无需 GitHub 登录或 token。Git 是拉取工具的前置依赖。目标目录应为空，旧版非 Git 安装不自动覆盖。
 
 ```powershell
 $skillsBase = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex\skills' }
@@ -46,10 +46,10 @@ install.ps1 也可从已下载的源码目录执行，自动 clone 到默认 ski
 
 FILM_REFERENCE_RUNTIME 可显式指定独立运行时目录，用于已有资源或隔离验证，默认无需设置。该目录须由当前用户控制，报告及自检输出均写入该目录。
 
-0.3.2 修复生成依赖目录丢失父目录权限继承的问题：安装后的依赖树启用 runtime 父目录已有 ACL 的继承，并保存完成记录；后续账号无需反复请求修改 DACL。不会新增 Everyone/Users 授权，也不会修改系统目录或全局安全策略。跨账号使用的前提是父目录本来就允许该账号读取、执行，以及更新所需的写入。
+0.3.2 及后续版本修复生成依赖目录丢失父目录权限继承的问题：安装后的依赖树启用 runtime 父目录已有 ACL 的继承，并保存完成记录；后续账号无需反复请求修改 DACL。不会新增 Everyone/Users 授权，也不会修改系统目录或全局安全策略。跨账号使用的前提是父目录本来就允许该账号读取、执行，以及更新所需的写入。
 
 旧版存在受保护依赖目录时，请先由原安装账号执行一次新版 setup.ps1 或 update.ps1 修复。普通读取账号没有修改 DACL 的权限时，明确报告需安装账号处理，不自动提权。CheckOnly 不做 ACL 修复。
 
 权限操作限于技能生成的 python-packages 或 packages-stage-* 直接子目录，拒绝重解析点，并使用 Windows 长路径语法。自检目录也继承 runtime 的已有权限。更新命令仅为本技能当前目录指定进程内 safe.directory，不写全局 Git 信任配置；本地改动/分叉保护仍保留。
 
-实际验证范围见 [0.3.2 跨账号复测记录](validation-0.3.2.md)。同主机隔离测试不等于另一台全新 Windows 电脑的完整系统安装验证。
+实际验证范围见 [0.3.3 普通账号在线安装记录](validation-0.3.3.md) 与 [跨账号复测记录](validation-0.3.2.md)。脚本不要求 Windows 管理员权限；Agent 所在的离线沙箱仍需具备联网权限，同主机隔离测试不等于新 Windows 系统安装验证。

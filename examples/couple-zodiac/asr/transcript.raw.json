@@ -1,0 +1,531 @@
+{
+  "source": "../source.mp4",
+  "language": "zh",
+  "duration": 16.6936875,
+  "review_state": "machine_transcript_unreviewed",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.52,
+      "text": "你能不能别动不动就闹别扭",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 0.16,
+          "word": "你",
+          "probability": 0.7389904260635376
+        },
+        {
+          "start": 0.16,
+          "end": 0.24,
+          "word": "能",
+          "probability": 0.9892892837524414
+        },
+        {
+          "start": 0.24,
+          "end": 0.38,
+          "word": "不能",
+          "probability": 0.980614423751831
+        },
+        {
+          "start": 0.38,
+          "end": 0.58,
+          "word": "别",
+          "probability": 0.7396455407142639
+        },
+        {
+          "start": 0.58,
+          "end": 0.76,
+          "word": "动",
+          "probability": 0.9901054501533508
+        },
+        {
+          "start": 0.76,
+          "end": 0.84,
+          "word": "不",
+          "probability": 0.9965069890022278
+        },
+        {
+          "start": 0.84,
+          "end": 0.94,
+          "word": "动",
+          "probability": 0.9867165088653564
+        },
+        {
+          "start": 0.94,
+          "end": 1.04,
+          "word": "就",
+          "probability": 0.9543416500091553
+        },
+        {
+          "start": 1.04,
+          "end": 1.2,
+          "word": "闹",
+          "probability": 0.9955758452415466
+        },
+        {
+          "start": 1.2,
+          "end": 1.32,
+          "word": "别",
+          "probability": 0.7207903861999512
+        },
+        {
+          "start": 1.32,
+          "end": 1.52,
+          "word": "扭",
+          "probability": 0.9938044250011444
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "start": 1.52,
+      "end": 2.92,
+      "text": "我一直都在为你着想",
+      "words": [
+        {
+          "start": 1.52,
+          "end": 1.94,
+          "word": "我",
+          "probability": 0.9110639691352844
+        },
+        {
+          "start": 1.94,
+          "end": 2.14,
+          "word": "一直",
+          "probability": 0.9971441626548767
+        },
+        {
+          "start": 2.14,
+          "end": 2.3,
+          "word": "都",
+          "probability": 0.9809953570365906
+        },
+        {
+          "start": 2.3,
+          "end": 2.4,
+          "word": "在",
+          "probability": 0.9983065128326416
+        },
+        {
+          "start": 2.4,
+          "end": 2.5,
+          "word": "为",
+          "probability": 0.9876419305801392
+        },
+        {
+          "start": 2.5,
+          "end": 2.6,
+          "word": "你",
+          "probability": 0.9965576529502869
+        },
+        {
+          "start": 2.6,
+          "end": 2.74,
+          "word": "着",
+          "probability": 0.9805728793144226
+        },
+        {
+          "start": 2.74,
+          "end": 2.92,
+          "word": "想",
+          "probability": 0.9930309653282166
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "start": 2.92,
+      "end": 4.16,
+      "text": "你还要我怎么理解你",
+      "words": [
+        {
+          "start": 2.92,
+          "end": 3.24,
+          "word": "你",
+          "probability": 0.9086537957191467
+        },
+        {
+          "start": 3.24,
+          "end": 3.34,
+          "word": "还",
+          "probability": 0.9787060618400574
+        },
+        {
+          "start": 3.34,
+          "end": 3.44,
+          "word": "要",
+          "probability": 0.9849830269813538
+        },
+        {
+          "start": 3.44,
+          "end": 3.54,
+          "word": "我",
+          "probability": 0.9978061318397522
+        },
+        {
+          "start": 3.54,
+          "end": 3.68,
+          "word": "怎么",
+          "probability": 0.9909052848815918
+        },
+        {
+          "start": 3.68,
+          "end": 3.82,
+          "word": "理",
+          "probability": 0.9967101812362671
+        },
+        {
+          "start": 3.82,
+          "end": 3.98,
+          "word": "解",
+          "probability": 0.9980142116546631
+        },
+        {
+          "start": 3.98,
+          "end": 4.16,
+          "word": "你",
+          "probability": 0.9967656135559082
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "start": 4.16,
+      "end": 5.52,
+      "text": "你自己看我的搜索记录",
+      "words": [
+        {
+          "start": 4.16,
+          "end": 4.56,
+          "word": "你",
+          "probability": 0.8821089267730713
+        },
+        {
+          "start": 4.56,
+          "end": 4.72,
+          "word": "自己",
+          "probability": 0.9983861446380615
+        },
+        {
+          "start": 4.72,
+          "end": 4.88,
+          "word": "看",
+          "probability": 0.9984663724899292
+        },
+        {
+          "start": 4.88,
+          "end": 5.02,
+          "word": "我的",
+          "probability": 0.9539278745651245
+        },
+        {
+          "start": 5.02,
+          "end": 5.18,
+          "word": "搜",
+          "probability": 0.9643652439117432
+        },
+        {
+          "start": 5.18,
+          "end": 5.26,
+          "word": "索",
+          "probability": 0.9995661079883575
+        },
+        {
+          "start": 5.26,
+          "end": 5.38,
+          "word": "记",
+          "probability": 0.9158315658569336
+        },
+        {
+          "start": 5.38,
+          "end": 5.52,
+          "word": "录",
+          "probability": 0.9994311630725861
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "start": 5.52,
+      "end": 6.74,
+      "text": "白洋座讨厌什么",
+      "words": [
+        {
+          "start": 5.52,
+          "end": 5.96,
+          "word": "白",
+          "probability": 0.9566985964775085
+        },
+        {
+          "start": 5.96,
+          "end": 6.04,
+          "word": "洋",
+          "probability": 0.7081930935382843
+        },
+        {
+          "start": 6.04,
+          "end": 6.16,
+          "word": "座",
+          "probability": 0.8897189199924469
+        },
+        {
+          "start": 6.16,
+          "end": 6.36,
+          "word": "讨",
+          "probability": 0.9965031445026398
+        },
+        {
+          "start": 6.36,
+          "end": 6.52,
+          "word": "厌",
+          "probability": 0.9934507608413696
+        },
+        {
+          "start": 6.52,
+          "end": 6.74,
+          "word": "什么",
+          "probability": 0.9902730584144592
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "start": 6.74,
+      "end": 8.36,
+      "text": "白洋座怎么哄和喜欢什么",
+      "words": [
+        {
+          "start": 6.74,
+          "end": 7.06,
+          "word": "白",
+          "probability": 0.9597320556640625
+        },
+        {
+          "start": 7.06,
+          "end": 7.16,
+          "word": "洋",
+          "probability": 0.9978073239326477
+        },
+        {
+          "start": 7.16,
+          "end": 7.3,
+          "word": "座",
+          "probability": 0.9987401068210602
+        },
+        {
+          "start": 7.3,
+          "end": 7.44,
+          "word": "怎么",
+          "probability": 0.9898752570152283
+        },
+        {
+          "start": 7.44,
+          "end": 7.66,
+          "word": "哄",
+          "probability": 0.931287556886673
+        },
+        {
+          "start": 7.66,
+          "end": 7.8,
+          "word": "和",
+          "probability": 0.9819090366363525
+        },
+        {
+          "start": 7.8,
+          "end": 8.04,
+          "word": "喜欢",
+          "probability": 0.9977666139602661
+        },
+        {
+          "start": 8.04,
+          "end": 8.36,
+          "word": "什么",
+          "probability": 0.996810257434845
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "start": 8.36,
+      "end": 9.4,
+      "text": "我一直都在学",
+      "words": [
+        {
+          "start": 8.36,
+          "end": 8.68,
+          "word": "我",
+          "probability": 0.9879670739173889
+        },
+        {
+          "start": 8.68,
+          "end": 8.92,
+          "word": "一直",
+          "probability": 0.9987108707427979
+        },
+        {
+          "start": 8.92,
+          "end": 9.08,
+          "word": "都",
+          "probability": 0.9976173043251038
+        },
+        {
+          "start": 9.08,
+          "end": 9.2,
+          "word": "在",
+          "probability": 0.9995299577713013
+        },
+        {
+          "start": 9.2,
+          "end": 9.4,
+          "word": "学",
+          "probability": 0.9936367273330688
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "start": 9.4,
+      "end": 10.84,
+      "text": "你到底还要我怎么做",
+      "words": [
+        {
+          "start": 9.4,
+          "end": 9.8,
+          "word": "你",
+          "probability": 0.9765902161598206
+        },
+        {
+          "start": 9.8,
+          "end": 9.96,
+          "word": "到底",
+          "probability": 0.9990447163581848
+        },
+        {
+          "start": 9.96,
+          "end": 10.2,
+          "word": "还",
+          "probability": 0.9920299053192139
+        },
+        {
+          "start": 10.2,
+          "end": 10.32,
+          "word": "要",
+          "probability": 0.99776291847229
+        },
+        {
+          "start": 10.32,
+          "end": 10.42,
+          "word": "我",
+          "probability": 0.9988971948623657
+        },
+        {
+          "start": 10.42,
+          "end": 10.6,
+          "word": "怎么",
+          "probability": 0.9970604777336121
+        },
+        {
+          "start": 10.6,
+          "end": 10.84,
+          "word": "做",
+          "probability": 0.9975082874298096
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "start": 11.219999999999999,
+      "end": 12.44,
+      "text": "我是巨蟹座",
+      "words": [
+        {
+          "start": 11.219999999999999,
+          "end": 11.54,
+          "word": "我是",
+          "probability": 0.906185507774353
+        },
+        {
+          "start": 11.54,
+          "end": 11.8,
+          "word": "巨",
+          "probability": 0.7516918480396271
+        },
+        {
+          "start": 11.8,
+          "end": 12.0,
+          "word": "蟹",
+          "probability": 0.9546817739804586
+        },
+        {
+          "start": 12.0,
+          "end": 12.44,
+          "word": "座",
+          "probability": 0.9985969364643097
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "start": 13.139999999999999,
+      "end": 14.72,
+      "text": "改星座也不说一声",
+      "words": [
+        {
+          "start": 13.139999999999999,
+          "end": 13.459999999999999,
+          "word": "改",
+          "probability": 0.8257166147232056
+        },
+        {
+          "start": 13.459999999999999,
+          "end": 13.78,
+          "word": "星",
+          "probability": 0.9606782793998718
+        },
+        {
+          "start": 13.78,
+          "end": 13.98,
+          "word": "座",
+          "probability": 0.9976864457130432
+        },
+        {
+          "start": 13.98,
+          "end": 14.06,
+          "word": "也",
+          "probability": 0.9870409965515137
+        },
+        {
+          "start": 14.06,
+          "end": 14.2,
+          "word": "不",
+          "probability": 0.9967414736747742
+        },
+        {
+          "start": 14.2,
+          "end": 14.42,
+          "word": "说",
+          "probability": 0.9982373714447021
+        },
+        {
+          "start": 14.42,
+          "end": 14.58,
+          "word": "一",
+          "probability": 0.9987843632698059
+        },
+        {
+          "start": 14.58,
+          "end": 14.72,
+          "word": "声",
+          "probability": 0.9849309921264648
+        }
+      ]
+    }
+  ],
+  "model": {
+    "repository": "Systran/faster-whisper-small",
+    "revision": "536b0662742c02347bc0e980a01041f333bce120"
+  },
+  "distributionNote": "Local absolute paths replaced for distribution; original machine segment/word text and timestamps retained. Not a full audio review."
+}
